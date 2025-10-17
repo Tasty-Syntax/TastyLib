@@ -1,10 +1,10 @@
-type ScoreBoardColLabel = string | mod.Message;
+type ScoreboardColLabel = string | mod.Message;
 
 /**
  * scoreboard creation and modification utility class
  * @author TastySyntax
  */
-export class CustomScoreboard {
+export class Scoreboard {
   constructor() { }
 
   /**
@@ -13,8 +13,8 @@ export class CustomScoreboard {
   * @param text2 Label of the second team
   * @returns CustomScoreboard
   */
-  setHeaders(text1: string | mod.Message): CustomScoreboard;
-  setHeaders(text1: string | mod.Message, text2?: string | mod.Message): CustomScoreboard {
+  setHeaders(text1: string | mod.Message): Scoreboard;
+  setHeaders(text1: string | mod.Message, text2?: string | mod.Message): Scoreboard {
     text1 = typeof text1 === 'string' ? mod.Message(text1) : text1;
 
     if (!text2) {
@@ -46,12 +46,12 @@ export class CustomScoreboard {
   * @param col5 Label of the fifth column
   * @returns CustomScoreboard
   */
-  setColumnLabels(col1: ScoreBoardColLabel): CustomScoreboard;
-  setColumnLabels(col1: ScoreBoardColLabel, col2: ScoreBoardColLabel): CustomScoreboard;
-  setColumnLabels(col1: ScoreBoardColLabel, col2: ScoreBoardColLabel, col3: ScoreBoardColLabel): CustomScoreboard;
-  setColumnLabels(col1: ScoreBoardColLabel, col2: ScoreBoardColLabel, col3: ScoreBoardColLabel, col4: ScoreBoardColLabel): CustomScoreboard;
-  setColumnLabels(col1: ScoreBoardColLabel, col2: ScoreBoardColLabel, col3: ScoreBoardColLabel, col4: ScoreBoardColLabel, col5: ScoreBoardColLabel): CustomScoreboard;
-  setColumnLabels(...cols: ScoreBoardColLabel[]): CustomScoreboard {
+  setColumnLabels(col1: ScoreboardColLabel): Scoreboard;
+  setColumnLabels(col1: ScoreboardColLabel, col2: ScoreboardColLabel): Scoreboard;
+  setColumnLabels(col1: ScoreboardColLabel, col2: ScoreboardColLabel, col3: ScoreboardColLabel): Scoreboard;
+  setColumnLabels(col1: ScoreboardColLabel, col2: ScoreboardColLabel, col3: ScoreboardColLabel, col4: ScoreboardColLabel): Scoreboard;
+  setColumnLabels(col1: ScoreboardColLabel, col2: ScoreboardColLabel, col3: ScoreboardColLabel, col4: ScoreboardColLabel, col5: ScoreboardColLabel): Scoreboard;
+  setColumnLabels(...cols: ScoreboardColLabel[]): Scoreboard {
     const labels = cols.map(label => {
       if (typeof label === 'string') {
         return mod.Message(label);
@@ -92,12 +92,12 @@ export class CustomScoreboard {
   * @param col5 Label of the fifth column
   * @returns CustomScoreboard
   */
-  setColumnWidth(col1: number): CustomScoreboard;
-  setColumnWidth(col1: number, col2: number): CustomScoreboard;
-  setColumnWidth(col1: number, col2: number, col3: number): CustomScoreboard;
-  setColumnWidth(col1: number, col2: number, col3: number, col4: number): CustomScoreboard;
-  setColumnWidth(col1: number, col2: number, col3: number, col4: number, col5: number): CustomScoreboard;
-  setColumnWidth(...cols: number[]): CustomScoreboard {
+  setColumnWidth(col1: number): Scoreboard;
+  setColumnWidth(col1: number, col2: number): Scoreboard;
+  setColumnWidth(col1: number, col2: number, col3: number): Scoreboard;
+  setColumnWidth(col1: number, col2: number, col3: number, col4: number): Scoreboard;
+  setColumnWidth(col1: number, col2: number, col3: number, col4: number, col5: number): Scoreboard;
+  setColumnWidth(...cols: number[]): Scoreboard {
     switch (cols.length) {
       case 1:
         mod.SetScoreboardColumnWidths(cols[0]);

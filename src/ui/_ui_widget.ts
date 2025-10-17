@@ -2,7 +2,7 @@
  * Represents a UI widget.
  * @author TastySyntax
  */
-export class _UiWidget {
+export abstract class UiWidget {
   private _name: string;
 
   /**
@@ -61,7 +61,7 @@ export class _UiWidget {
    * @param anchor - The new anchor point of the widget.
    * @returns The current instance of UiWidget.
    */
-  setWidgetAnchor(anchor: mod.UIAnchor): _UiWidget {
+  setWidgetAnchor(anchor: mod.UIAnchor): UiWidget {
     mod.SetUIWidgetAnchor(this.widget, anchor);
     return this;
   }
@@ -71,7 +71,7 @@ export class _UiWidget {
    * @param alpha - The new alpha value of the widget.
    * @returns The current instance of UiWidget.
    */
-  setWidgetBgAlpha(alpha: number): _UiWidget {
+  setWidgetBgAlpha(alpha: number): UiWidget {
     mod.SetUIWidgetBgAlpha(this.widget, alpha);
     return this;
   }
@@ -81,7 +81,7 @@ export class _UiWidget {
    * @param color - The new background color of the widget.
    * @returns The current instance of UiWidget.
    */
-  setWidgetBgColor(color: mod.Vector): _UiWidget {
+  setWidgetBgColor(color: mod.Vector): UiWidget {
     mod.SetUIWidgetBgColor(this.widget, color);
     return this;
   }
@@ -91,7 +91,7 @@ export class _UiWidget {
    * @param fill - The new background fill of the widget.
    * @returns The current instance of UiWidget.
    */
-  setWidgetBgFill(fill: mod.UIBgFill): _UiWidget {
+  setWidgetBgFill(fill: mod.UIBgFill): UiWidget {
     mod.SetUIWidgetBgFill(this.widget, fill);
     return this;
   }
@@ -101,7 +101,7 @@ export class _UiWidget {
    * @param depth - The new depth of the widget.
    * @returns The current instance of UiWidget.
    */
-  setWidgetDepth(depth: mod.UIDepth): _UiWidget {
+  setWidgetDepth(depth: mod.UIDepth): UiWidget {
     mod.SetUIWidgetDepth(this.widget, depth);
     return this;
   }
@@ -111,7 +111,7 @@ export class _UiWidget {
    * @param name - The new name of the widget.
    * @returns The current instance of UiWidget.
    */
-  setWidgetName(name: string): _UiWidget {
+  setWidgetName(name: string): UiWidget {
     mod.SetUIWidgetName(this.widget, name);
     this._name = name;
     return this;
@@ -122,7 +122,7 @@ export class _UiWidget {
    * @param padding - The new padding of the widget.
    * @returns The current instance of UiWidget.
    */
-  setWidgetPadding(padding: number): _UiWidget {
+  setWidgetPadding(padding: number): UiWidget {
     mod.SetUIWidgetPadding(this.widget, padding);
     return this;
   }
@@ -132,7 +132,7 @@ export class _UiWidget {
    * @param parent - The new parent of the widget.
    * @returns The current instance of UiWidget.
    */
-  setWidgetParent(parent: mod.UIWidget): _UiWidget {
+  setWidgetParent(parent: mod.UIWidget): UiWidget {
     mod.SetUIWidgetParent(this.widget, parent);
     return this;
   }
@@ -142,7 +142,7 @@ export class _UiWidget {
    * @param position - The new position of the widget.
    * @returns The current instance of UiWidget.
    */
-  setWidgetPosition(position: mod.Vector): _UiWidget {
+  setWidgetPosition(position: mod.Vector): UiWidget {
     mod.SetUIWidgetPosition(this.widget, position);
     return this;
   }
@@ -152,7 +152,7 @@ export class _UiWidget {
    * @param size - The new size of the widget.
    * @returns The current instance of UiWidget.
    */
-  setWidgetSize(size: mod.Vector): _UiWidget {
+  setWidgetSize(size: mod.Vector): UiWidget {
     mod.SetUIWidgetSize(this.widget, size);
     return this;
   }
@@ -162,7 +162,7 @@ export class _UiWidget {
    * @param visible - The new visibility of the widget.
    * @returns The current instance of UiWidget.
    */
-  setWidgetVisible(visible: boolean): _UiWidget {
+  setWidgetVisible(visible: boolean): UiWidget {
     mod.SetUIWidgetVisible(this.widget, visible);
     return this;
   }
@@ -173,5 +173,13 @@ export class _UiWidget {
    */
   delete(): void {
     mod.DeleteUIWidget(this.widget);
+  }
+
+
+  /**
+   * Deletes all widgets.
+   */
+  static removeAll() {
+    mod.DeleteAllUIWidgets();
   }
 }
