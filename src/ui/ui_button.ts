@@ -1,11 +1,11 @@
-import { _UiWidget } from "./_ui_widget";
+import { UiWidget } from "./_ui_widget";
 
 /**
  * Represents a UI button widget.
  * @extends _UiWidget
  * @author TastySyntax
  */
-export class UiButton extends _UiWidget {
+export class UiButton extends UiWidget {
   /**
    * Constructs a new UiButton instance.
    * @param name - The name of the button.

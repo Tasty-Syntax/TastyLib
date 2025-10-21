@@ -10,6 +10,13 @@ export class Player {
   constructor(private _player: mod.Player) { }
 
   /**
+   * get mod.Player
+   */
+  get modPlayer(): mod.Player {
+    return this._player;
+  }
+
+  /**
    * get player id
    */
   get id(): number {

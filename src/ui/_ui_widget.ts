@@ -33,7 +33,7 @@ export abstract class UiWidget {
   }
 
   /**
-   * Gets the size of the widget.
+   * Gets the size of the widget.returns
    * @returns The size of the widget.
    */
   get size(): mod.Vector {
@@ -169,12 +169,21 @@ export abstract class UiWidget {
 
 
   /**
+   * Execute a function after a certain amount of seconds
+   * @param duration - Duration in seconds
+   * @param callback - Function that gets called after set duration
+   */
+  async setTimeout(duration: number, callback: () => void) {
+    await mod.Wait(duration);
+    callback();
+  }
+
+  /**
    * Deletes the widget.
    */
   delete(): void {
     mod.DeleteUIWidget(this.widget);
   }
-
 
   /**
    * Deletes all widgets.
