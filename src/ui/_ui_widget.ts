@@ -4,6 +4,7 @@
  */
 export abstract class UiWidget {
   private _name: string;
+  private _searchRoot: mod.UIWidget;
 
   /**
    * Constructs a new UiWidget instance.
@@ -12,8 +13,9 @@ export abstract class UiWidget {
    * @param size - The size of the widget.
    * @param anchor - The anchor point of the widget.
    */
-  constructor(name: string) {
+  constructor(name: string, searchRoot: mod.UIWidget = mod.GetUIRoot()) {
     this._name = name;
+    this._searchRoot = searchRoot;
   }
 
   /**
@@ -53,7 +55,7 @@ export abstract class UiWidget {
    * @returns The widget object.
    */
   get widget(): mod.Any {
-    return mod.FindUIWidgetWithName(this.name);
+    return mod.FindUIWidgetWithName(this.name, this._searchRoot);
   }
 
   /**

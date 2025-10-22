@@ -9,18 +9,35 @@ export class UiButton extends UiWidget {
   /**
    * Constructs a new UiButton instance.
    * @param name - The name of the button.
+   */
+  private constructor(name: string, searchRoot?: mod.UIWidget) {
+    super(name, searchRoot);
+  }
+
+  /**
+   * Constructs a new UiButton instance linked to a already existing widget.
+   * @param name - The name of the button.
+   * @param searchRoot - Root mod.UIWidget to start search from
+   */
+  static get(name: string, searchRoot?: mod.UIWidget) {
+    return new UiButton(name, searchRoot);
+  }
+
+  /**
+   * Constructs a new UiButton instance.
+   * @param name - The name of the button.
    * @param position - The position of the button.
    * @param size - The size of the button.
    * @param anchor - The anchor point of the button.
    */
-  constructor(name: string, position: mod.Vector, size: mod.Vector, anchor: mod.UIAnchor, recipient?: mod.Player | mod.Team) {
-    super(name);
-
+  static new(name: string, position: mod.Vector, size: mod.Vector, anchor: mod.UIAnchor, recipient?: mod.Player | mod.Team) {
     if (recipient) {
       mod.AddUIButton(name, position, size, anchor, recipient);
     } else {
       mod.AddUIButton(name, position, size, anchor);
     }
+
+    return new UiButton(name);
   }
 
   /**
