@@ -4,7 +4,9 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "build": "ts-node scripts/bundle.ts"
+    "build": "ts-node scripts/bundle.ts",
+    "build:declaration": "tsc --project tsconfig.declarations.json",
+    "build:clean": "rm -rf ./dist && npm run build && npm run build:declaration"
   },
   "keywords": ["Battlefield 6", "BF 6", "Battlefield Portal"],
   "author": "Tasty Syntax",

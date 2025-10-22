@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "stripInternal": false,
+    "removeComments": false,
+    "noEmit": false,
+    "outFile": "dist/index.d.ts",
+    "declaration": true,
+    "emitDeclarationOnly": true
+  },
+  "include": ["dist", ".portal/index.d.ts"]
+}
+
