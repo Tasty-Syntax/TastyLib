@@ -4,7 +4,7 @@
     "stripInternal": false,
     "removeComments": false,
     "noEmit": false,
-    "outFile": "dist/index.d.ts",
+    "outFile": "dist/tasty.d.ts",
     "declaration": true,
     "emitDeclarationOnly": true
   },

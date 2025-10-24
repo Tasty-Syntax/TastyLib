@@ -22,24 +22,29 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Install dependencies
         run: npm install
 
       - name: Run build
         run: |
+          echo "Starting build..."
           npm run build
-          echo "Waiting a few seconds to ensure dist/mod.ts is ready..."
-          sleep 4
 
       - name: Verify build output
         run: |
-          if [ ! -f dist/mod.ts ]; then
-            echo "❌ dist/mod.ts not found! Make sure your build outputs it."
+          if [ ! -f dist/tasty.ts ]; then
+            echo "❌ dist/tasty.ts not found! Make sure your build outputs it."
             exit 1
           fi
-          echo "✅ Found dist/mod.ts"
+          echo "✅ Found dist/tasty.ts"
+
+          if [ ! -f dist/tasty.d.ts ]; then
+            echo "❌ dist/tasty.d.ts not found! Make sure your build outputs it."
+            exit 1
+          fi
+          echo "✅ Found dist/tasty.d.ts"
 
       - name: Determine current and previous tag
         id: tags
@@ -104,11 +109,13 @@ jobs:
           tag="${{ steps.tags.outputs.current }}"
 
           mkdir -p release
-          new_name="${repo_name}-v${tag}.ts"
-          cp dist/mod.ts "release/${new_name}"
+          new_name_ts="${repo_name}-${tag}.ts"
+          new_name_d="${repo_name}-${tag}.d.ts"
+          cp dist/tasty.ts "release/${new_name_ts}"
+          cp dist/tasty.d.ts "release/${new_name_d}"
 
-          echo "asset_path=release/${new_name}" >> "$GITHUB_OUTPUT"
-          echo "asset_name=${new_name}" >> "$GITHUB_OUTPUT"
+          echo "asset_path=release/tastylib-${tag}" >> "$GITHUB_OUTPUT"
+          echo "asset_name=TastyLib-${tag}" >> "$GITHUB_OUTPUT"
 
       - name: Package maps and scenes (if present)
         id: extras

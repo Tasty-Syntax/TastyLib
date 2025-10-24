@@ -8,7 +8,7 @@ async function bundle() {
   });
 
   const srcDir = "src";
-  const outFile = "dist/bundle.ts";
+  const outFile = "dist/tasty.ts";
   const namespaceName = "tasty"; // <-- Change your namespace here
 
   // Ensure output directory exists

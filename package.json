@@ -4,16 +4,20 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "build": "ts-node scripts/bundle.ts",
+    "build": "rm -rf ./dist && node scripts/bundle.ts && npm run build:declaration && npm run build:strip-comments && rm -rf dist/bundle.ts",
+    "build:bundle": "node scripts/bundle.ts",
     "build:declaration": "tsc --project tsconfig.declarations.json",
-    "build:clean": "rm -rf ./dist && npm run build && npm run build:declaration"
+    "build:strip-comments": "node scripts/strip-docs.ts"
   },
-  "keywords": ["Battlefield 6", "BF 6", "Battlefield Portal"],
+  "keywords": [
+    "Battlefield 6",
+    "BF 6",
+    "Battlefield Portal"
+  ],
   "author": "Tasty Syntax",
   "license": "LGPL-3.0-or-later",
   "devDependencies": {
     "ts-morph": "^22.0.0",
-    "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
   }
 }

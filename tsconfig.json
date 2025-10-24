@@ -6,7 +6,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true
   },
-  "include": ["src", ".portal/**/*.d.ts", "dist"]
+  "include": ["src", ".portal/**/*.d.ts"]
 }
 
 
